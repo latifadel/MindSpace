@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mindspace Journal</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#6157F6"/>
+  <link rel="icon" href="icon-192.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header class="app-bar">
+    <span class="app-logo"><i>📝</i> Mindspace</span>
+    <button id="themeToggle" class="icon-btn"><span id="themeIcon">🌙</span></button>
+  </header>
+  <div class="top-bar">
+    <input id="searchInput" type="text" placeholder="Search your journal...">
+    <button id="promptBtn" class="icon-btn" title="Prompt">💡</button>
+  </div>
+  <div id="promptSection" class="prompt-section"></div>
+  <div id="quoteSection" class="quote-section"></div>
+  <div id="calendarSection" class="calendar-section hidden"></div>
+  <div id="dashboardSection" class="dashboard-section hidden"></div>
+  <div id="settingsSection" class="settings-section hidden"></div>
+  <main id="feedSection">
+    <ul id="entriesList"></ul>
+  </main>
+  <button id="fab" title="New Entry">+</button>
+  <div id="entryModal" class="modal-bg hidden">
+    <form class="modal card" id="entryForm" autocomplete="off">
+      <div class="modal-header">
+        <span id="entryModalTitle">New Entry</span>
+        <button type="button" class="close-btn" id="closeEntryModal"><b>✕</b></button>
+      </div>
+      <input type="text" id="entryTitle" placeholder="Title (optional)" maxlength="100">
+      <div class="rte-toolbar">
+        <button type="button" data-cmd="bold"><b>B</b></button>
+        <button type="button" data-cmd="italic"><i>I</i></button>
+        <button type="button" data-cmd="underline"><u>U</u></button>
+        <button type="button" data-cmd="insertUnorderedList">&bull; List</button>
+        <button type="button" data-cmd="heading">H</button>
+      </div>
+      <div id="entryContent" contenteditable="true" class="entry-content-box"></div>
+      <input id="tagsInput" type="text" placeholder="#tags (comma/space)">
+      <select id="moodInput" title="Mood">
+        <option value="">😐 Mood</option>
+        <option value="happy">😊 Happy</option>
+        <option value="sad">😢 Sad</option>
+        <option value="angry">😡 Angry</option>
+        <option value="tired">😴 Tired</option>
+        <option value="excited">🤩 Excited</option>
+        <option value="anxious">😬 Anxious</option>
+        <option value="calm">😌 Calm</option>
+      </select>
+      <button type="button" id="locateBtn" title="Add Location">📍</button>
+      <label class="upload-btn">
+        <input type="file" id="imageInput" accept="image/*" hidden>
+        🖼️ Image
+      </label>
+      <label class="upload-btn">
+        <input type="file" id="audioInput" accept="audio/*" hidden>
+        🎤 Audio
+      </label>
+      <button type="button" id="bookmarkBtn" title="Bookmark">⭐</button>
+      <div id="mediaPreview" class="media-preview"></div>
+      <div class="modal-footer">
+        <button type="submit" class="main-btn">Save</button>
+        <button type="button" id="deleteEntryBtn" class="ghost-btn hidden">Delete</button>
+      </div>
+    </form>
+  </div>
+  <nav id="bottomNav" class="bottom-nav">
+    <button class="nav-btn active" data-nav="feed">🏠<span>Feed</span></button>
+    <button class="nav-btn" data-nav="calendar">📅<span>Calendar</span></button>
+    <button class="nav-btn" data-nav="dashboard">📊<span>Stats</span></button>
+    <button class="nav-btn" data-nav="settings">⚙️<span>Settings</span></button>
+  </nav>
+  <div id="snackbar"></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
